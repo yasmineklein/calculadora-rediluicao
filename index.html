@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Rediluição</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="calculator-container">
+        <h1>Calculadora de Rediluição de Parcela Leve</h1>
+        <p>Use esta ferramenta para verificar se há necessidade de lançar crédito para o aluno após uma mudança no valor da mensalidade.</p>
+
+        <fieldset>
+            <legend>1. Cálculo da Diluição Original</legend>
+            <div class="input-group">
+                <label for="valorMatricula">Valor Integral da Matrícula </label>
+                <input type="number" id="valorMatricula" placeholder="Ex: 999.00">
+            </div>
+            <div class="input-group">
+                <label for="valorParcelaLeve">Valor da Parcela Leve </label>
+                <input type="number" id="valorParcelaLeve" placeholder="Ex: 49.00 ou 59.00">
+            </div>
+            <div class="input-group">
+                <label for="qtdParcelas">Quantidade de Parcelas Contratadas </label>
+                <input type="number" id="qtdParcelas" min="1" max="3" placeholder="Ex: 1, 2 ou 3">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>2. Cálculo da Rediluição</legend>
+            <div class="input-group">
+                <label for="valorNovoBoleto">Valor integral do último boleto </label>
+                <input type="number" id="valorNovoBoleto" placeholder="Valor do boleto 06 ou 12">
+            </div>
+        </fieldset>
+
+        <button onclick="calcularRediluicao()">Calcular</button>
+
+        <div id="resultado">
+             </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
