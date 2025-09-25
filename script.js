@@ -41,19 +41,30 @@ function calcularRediluicao() {
         <hr>
     `;
 
-    // Verifica se a rediluição é menor e se há crédito a ser lançado (H9)
+    // Verifica se a rediluição é menor e se há ajuste a ser lançado 
     if (credito > 0) {
         resumoHTML += `
             <div class="final-result success">
                 <h4>Ação Necessária:</h4>
-                <p>Lançar crédito no valor de <strong>R$ ${credito.toFixed(2)}</strong></p>
+                <p>Realizar ajuste no valor de <strong>R$ ${credito.toFixed(2)}</strong></p>
+            </div>
+        `;
+    } else if (credito === 0) {
+        resumoHTML += `
+            <div class="final-result info">
+                <h4>Ação Necessária:</h4>
+                <p>Resultado: <strong>R$ ${credito.toFixed(2)}</strong></p>
+                <p>Não há ajuste a ser lançado. O novo valor diluído é maior ou igual ao anterior.</p>
             </div>
         `;
     } else {
         resumoHTML += `
             <div class="final-result info">
                 <h4>Ação Necessária:</h4>
-                <p>Não há crédito a ser lançado. O novo valor diluído é maior ou igual ao anterior.</p>
+                <p>Resultado (débito): <strong>R$ ${Math.abs(credito).toFixed(2)}</strong></p>
+                <p>O valor a ser diluído aumentou. Verifique se há uma quarta diluição para cobrir essa diferença.</p>
+                <p>A cobrança adicional precisa corresponder ao somatório do novo valor total, caso esteja a maior realize os devidos ajustes.</p>
+                <p>No entanto, se for gerado a menor ou não existir não será necessária nenhuma ação.</p>
             </div>
         `;
     }
