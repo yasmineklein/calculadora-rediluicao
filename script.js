@@ -33,7 +33,7 @@ function calcularRediluicao() {
     // Limpa o conteúdo anterior
     resultadoDiv.innerHTML = ''; 
 
-    // Monta a string com o resumo dos cálculos
+    // string com o resumo dos cálculos
     let resumoHTML = `
         <h3>Resumo do Cálculo:</h3>
         <p><strong>Total diluído originalmente:</strong> R$ ${totalDiluidoInicial.toFixed(2)}</p>
@@ -61,7 +61,7 @@ function calcularRediluicao() {
         resumoHTML += `
             <div class="final-result info">
                 <h4>Ação Necessária:</h4>
-                <p>Resultado (débito): <strong>R$ ${Math.abs(credito).toFixed(2)}</strong></p>
+                <p>Resultado: <strong>R$ ${Math.abs(credito).toFixed(2)}</strong></p>
                 <p>O valor a ser diluído aumentou. Verifique se há uma quarta diluição para cobrir essa diferença.</p>
                 <p>A cobrança adicional precisa corresponder ao somatório do novo valor total, caso esteja a maior realize os devidos ajustes.</p>
                 <p>No entanto, se for gerado a menor ou não existir não será necessária nenhuma ação.</p>
@@ -72,3 +72,4 @@ function calcularRediluicao() {
     // Exibe o resumo completo na tela
     resultadoDiv.innerHTML = resumoHTML;
 }
+
