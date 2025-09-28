@@ -13,27 +13,18 @@ function calcularRediluicao() {
     }
 
     // --- 2. CÁLCULO DA DILUIÇÃO INICIAL ---
-    // (B2 - D2)
     const diferencaInicial = valorMatricula - valorParcelaLeve;
-    // (F2 * B5)
     const totalDiluidoInicial = diferencaInicial * qtdParcelas;
 
-
     // --- 3. CÁLCULO DA REDILUIÇÃO ---
-    // (B10 - D2)
     const diferencaRediluicao = valorNovoBoleto - valorParcelaLeve;
-    // (D10 * B5)
     const totalRediluido = diferencaRediluicao * qtdParcelas;
 
-
     // --- 4. RESULTADO E AÇÃO ---
-    // (D5 - F10)
     const credito = totalDiluidoInicial - totalRediluido;
 
-    // Limpa o conteúdo anterior
     resultadoDiv.innerHTML = ''; 
 
-    // string com o resumo dos cálculos
     let resumoHTML = `
         <h3>Resumo do Cálculo:</h3>
         <p><strong>Total diluído originalmente:</strong> R$ ${totalDiluidoInicial.toFixed(2)}</p>
@@ -72,4 +63,5 @@ function calcularRediluicao() {
     // Exibe o resumo completo na tela
     resultadoDiv.innerHTML = resumoHTML;
 }
+
 
