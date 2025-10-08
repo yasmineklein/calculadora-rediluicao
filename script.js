@@ -3,32 +3,47 @@ function calcularRediluicao() {
     const valorMatricula = parseFloat(document.getElementById('valorMatricula').value);
     const valorParcelaLeve = parseFloat(document.getElementById('valorParcelaLeve').value);
     const qtdParcelas = parseInt(document.getElementById('qtdParcelas').value);
+    const valorParcelaLeve1 = parseFloat (document.getElementById('valorParcelaLeve1').value);
+    const valorParcelaLeve2 = parseFloat (document.getElementById('valorParcelaLeve2').value);
+    const valorParcelaLeve3 = parseFloat (document.getElementById('valorParcelaLeve3').value);
     const valorNovoBoleto = parseFloat(document.getElementById('valorNovoBoleto').value);
     const resultadoDiv = document.getElementById('resultado');
 
     // Validação para garantir que todos os campos foram preenchidos
-    if (isNaN(valorMatricula) || isNaN(valorParcelaLeve) || isNaN(qtdParcelas) || isNaN(valorNovoBoleto)) {
+    if (isNaN(valorMatricula) || isNaN(valorParcelaLeve) || isNaN(qtdParcelas) || isNaN(valorParcelaLeve1) || isNaN(valorParcelaLeve2) || isNaN(valorParcelaLeve3) || isNaN(valorNovoBoleto)) {
         resultadoDiv.innerHTML = `<p class="error">Por favor, preencha todos os campos com valores numéricos.</p>`;
         return;
     }
 
     // --- 2. CÁLCULO DA DILUIÇÃO INICIAL ---
+   
     const diferencaInicial = valorMatricula - valorParcelaLeve;
     const totalDiluidoInicial = diferencaInicial * qtdParcelas;
 
-    // --- 3. CÁLCULO DA REDILUIÇÃO ---
+    // --- 3. SOMA DOS VALORES NO FINANCEIRO ---
+    
+    const totalfinInicial = valorParcelaLeve1 + valorParcelaLeve2 + valorParcelaLeve3;
+
+    // --- 4. CÁLCULO DA REDILUIÇÃO ---
+    
     const diferencaRediluicao = valorNovoBoleto - valorParcelaLeve;
     const totalRediluido = diferencaRediluicao * qtdParcelas;
+    
+    // --- 5. CÁLCULO DAS DIFERENÇAS E CRÉDITO ---
+    
+    const diferencafinrediluicao = totalfinInicial - totalRediluido;
+    const credito = totalfinInicial - totalRediluido;
 
-    // --- 4. RESULTADO E AÇÃO ---
-    const credito = totalDiluidoInicial - totalRediluido;
-
+    // Limpa o conteúdo anterior
     resultadoDiv.innerHTML = ''; 
 
+    // Monta a string com o resumo dos cálculos
     let resumoHTML = `
         <h3>Resumo do Cálculo:</h3>
         <p><strong>Total diluído originalmente:</strong> R$ ${totalDiluidoInicial.toFixed(2)}</p>
+        <p><strong>Soma das parcelas no financeiro:</strong> R$ ${totalfinInicial.toFixed(2)}</p>
         <p><strong>Novo total a ser diluído (Rediluição):</strong> R$ ${totalRediluido.toFixed(2)}</p>
+        <p><strong>Diferença entre financeiro e rediluição:</strong> R$ ${diferencafinrediluicao.toFixed(2)}</p>
         <hr>
     `;
 
@@ -63,5 +78,3 @@ function calcularRediluicao() {
     // Exibe o resumo completo na tela
     resultadoDiv.innerHTML = resumoHTML;
 }
-
-
