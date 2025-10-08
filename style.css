@@ -1,13 +1,14 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #4453c9fb;
-    color: #333;
+    background-color: #3c4ac0;
+    color: #222;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     padding: 20px;
+    transition: background-color 0.3s ease;
 }
 
 .calculator-container {
@@ -17,7 +18,14 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 600px;
+    transition: all 0.3s ease;
 }
+
+.calculator-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
 
 h1 {
     color: #0056b3;
@@ -63,12 +71,28 @@ input[type="number"] {
     border-radius: 6px;
     box-sizing: border-box; 
     font-size: 16px;
+    transition: all 0.3s ease;
 }
 
 input[type="number"]:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+    
+}
+
+/* --- CÓDIGO PARA REMOVER AS SETAS DO CAMPO NUMÉRICO --- */
+
+/* Chrome, Safari, Edge e Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+ /* Firefox */
+ input[type="number"] {
+    -moz-appearance: textfield; 
 }
 
 button {
@@ -81,11 +105,12 @@ button {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.02);
 }
 
 #resultado {
@@ -93,6 +118,7 @@ button:hover {
     padding: 20px;
     border-radius: 8px;
     background-color: #e9ecef;
+    animation: fadeIn 0.4s ease;
 }
 
 #resultado h3, #resultado h4 {
@@ -111,16 +137,19 @@ button:hover {
     font-size: 1.1em;
 }
 
+/* Estilos de Alerta */
 .success {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
+    animation: fadeIn 0.4s ease;
 }
 
 .info {
     background-color: #e2e3e5;
     color: #383d41;
     border: 1px solid #d6d8db;
+    animation: fadeIn 0.4s ease;
 }
 
 .error {
@@ -130,19 +159,39 @@ button:hover {
     padding: 10px;
     border-radius: 6px;
     text-align: center;
+    animation: fadeIn 0.4s ease;
 }
 
-/* --- CÓDIGO PARA REMOVER AS SETAS DO CAMPO NUMÉRICO --- */
-
-/* Para navegadores como Chrome, Safari, Edge e Opera */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0; 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
- /* Para o navegador Firefox */
- input[type="number"] {
-    -moz-appearance: textfield; 
+@media (max-width: 480px) {
+    .calculator-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    input[type="number"],
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    fieldset {
+        padding: 15px;
+    }
 }
+
 
