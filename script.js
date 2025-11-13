@@ -1,5 +1,5 @@
 function calcularRediluicao() {
-    // --- 1. CAPTURAR VALORES DOS INPUTS ---
+    
     const valorMatricula = parseFloat(document.getElementById('valorMatricula').value);
     const valorParcelaLeve = parseFloat(document.getElementById('valorParcelaLeve').value);
     const qtdParcelas = parseInt(document.getElementById('qtdParcelas').value);
@@ -9,35 +9,29 @@ function calcularRediluicao() {
     const valorNovoBoleto = parseFloat(document.getElementById('valorNovoBoleto').value);
     const resultadoDiv = document.getElementById('resultado');
 
-    // Validação para garantir que todos os campos foram preenchidos
+   
     if (isNaN(valorMatricula) || isNaN(valorParcelaLeve) || isNaN(qtdParcelas) || isNaN(valorParcelaLeve1) || isNaN(valorParcelaLeve2) || isNaN(valorParcelaLeve3) || isNaN(valorNovoBoleto)) {
         resultadoDiv.innerHTML = `<p class="error">Por favor, preencha todos os campos com valores numéricos.</p>`;
         return;
     }
 
-    // --- 2. CÁLCULO DA DILUIÇÃO INICIAL ---
    
     const diferencaInicial = valorMatricula - valorParcelaLeve;
     const totalDiluidoInicial = diferencaInicial * qtdParcelas;
 
-    // --- 3. SOMA DOS VALORES NO FINANCEIRO ---
     
     const totalfinInicial = valorParcelaLeve1 + valorParcelaLeve2 + valorParcelaLeve3;
 
-    // --- 4. CÁLCULO DA REDILUIÇÃO ---
     
     const diferencaRediluicao = valorNovoBoleto - valorParcelaLeve;
     const totalRediluido = diferencaRediluicao * qtdParcelas;
     
-    // --- 5. CÁLCULO DAS DIFERENÇAS E CRÉDITO ---
     
     const diferencafinrediluicao = totalfinInicial - totalRediluido;
     const credito = totalfinInicial - totalRediluido;
 
-    // Limpa o conteúdo anterior
     resultadoDiv.innerHTML = ''; 
 
-    // Monta a string com o resumo dos cálculos
     let resumoHTML = `
         <h3>Resumo do Cálculo:</h3>
         <p><strong>Total diluído originalmente:</strong> R$ ${totalDiluidoInicial.toFixed(2)}</p>
@@ -47,7 +41,6 @@ function calcularRediluicao() {
         <hr>
     `;
 
-    // Verifica se a rediluição é menor e se há ajuste a ser lançado 
     if (credito > 0) {
         resumoHTML += `
             <div class="final-result success">
@@ -75,6 +68,6 @@ function calcularRediluicao() {
         `;
     }
 
-    // Exibe o resumo completo na tela
     resultadoDiv.innerHTML = resumoHTML;
 }
+
