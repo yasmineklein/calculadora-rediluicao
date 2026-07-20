@@ -4,71 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Rediluição</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <nav class="nav">
+      
+        <button class="nav-toggle" aria-label="Toggle navigation">
+         <span></span>
+         <span></span>
+         <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="proj1.html">Menu inicial</a></li>
+            </ul>
+        </div>  
+                
+        </button>
+        
+    </nav>
+
     <div class="calculator-container">
-        <h1>Calculadora de Rediluição de Parcela Leve</h1>
-        <p>Use esta ferramenta para verificar se há necessidade de lançar crédito para o aluno após uma mudança no valor integral da mensalidade.</p>
+        <div class="calc-header">
+            <h1>Calculadora de Rediluição de Parcela Leve</h1>
+            <p>Use esta ferramenta para verificar se há necessidade de lançar crédito para o aluno após uma mudança no valor da mensalidade.</p>
 
-        <p style="font-size: 0.9em; color: #666; margin-top: -10px; margin-bottom: 20px;">
-          <strong>Atenção:</strong> Não utilize ponto (.) para separar milhares (ex: 1.000). 
-          Use apenas a vírgula (,) para separar os centavos (ex: 1000,50).
-        </p>
+            <p style="font-size: 0.9em; color: #fffefe; margin-top: -10px; margin-bottom: 20px;">
+             <strong>Atenção:</strong> Não utilize ponto (.) para separar milhares (ex: 1.000). 
+             Use apenas a vírgula (,) para separar os centavos (ex: 1000,50).
+            </p>
+        </div>
 
-        <fieldset>
-            <legend>1. Cálculo da Diluição Original</legend>
-            <div class="input-group">
-                <label for="valorMatricula">Valor Integral da Matrícula </label>
-                <input type="number" id="valorMatricula" placeholder="Ex: 999.00">
-            </div>
-            <div class="input-group">
-                <label for="valorParcelaLeve">Valor da Parcela Leve </label>
-                <input type="number" id="valorParcelaLeve" placeholder="Ex: 49.00 ou 59.00">
-            </div>
-            <div class="input-group">
-                <label for="qtdParcelas">Quantidade de Parcelas Contratadas </label>
-                <input type="number" id="qtdParcelas" min="1" max="3" placeholder="Ex: 1, 2 ou 3">
-            </div>
-        </fieldset>
+        <div class="calc-body">
+            <fieldset>
+                <legend>1. Cálculo da Diluição Original</legend>
+                <div class="row-horizontal">
+                    <div class="input-group">
+                        <label for="valorMatricula">Valor Integral da Matrícula</label>
+                        <input type="text" inputmode="decimal" id="valorMatricula" placeholder="Ex: 999,00">
+                    </div>
+                    <div class="input-group">
+                        <label for="valorParcelaLeve">Valor da Parcela Leve</label>
+                        <input type="text" inputmode="decimal" id="valorParcelaLeve" placeholder="Ex: 79,00">
+                    </div>
+                    <div class="input-group">
+                        <label for="qtdParcelas">Parcelas Contratadas</label>
+                        <input type="text" inputmode="numeric" id="qtdParcelas" placeholder="Ex: 1, 2 ou 3">
+                    </div>
+                </div>
+             
 
-        <fieldset>
-            <legend>2. Valores no Financeiro</legend>
-            <div class="input-group">
-                <label for="valorParcelaLeve1">Valor da Parcela 1 </label>
-                <input type="number" id="valorParcelaLeve1" placeholder="Ex: 999.00">
-            </div>
-            <div class="input-group">
-                <label for="valorParcelaLeve2">Valor da Parcela 2 </label>
-                <input type="number" id="valorParcelaLeve2" placeholder="Ex: 999.00">
-            </div>
-            <div class="input-group">
-                <label for="valorParcelaLeve3">Valor da Parcela 3 </label>
-                <input type="number" id="valorParcelaLeve3" min="1" max="3" placeholder="Ex: 999.00">
-            </div>
-        </fieldset>
+            <fieldset>
+                <legend>2. Valores no Financeiro</legend>
+                <div class="row-horizontal">
+                    <div class="input-group">
+                        <label for="valorParcelaLeve1">Valor da Parcela 1 </label>
+                        <input type="text" inputmode="decimal" id="valorParcelaLeve1" placeholder="Ex: 999,00">
+                    </div>
+                    <div class="input-group">
+                        <label for="valorParcelaLeve2">Valor da Parcela 2 </label>
+                        <input type="text" inputmode="decimal" id="valorParcelaLeve2" placeholder="Ex: 999,00">
+                    </div>
+                    <div class="input-group">
+                        <label for="valorParcelaLeve3">Valor da Parcela 3 </label>
+                        <input type="text" inputmode="decimal" id="valorParcelaLeve3" placeholder="Ex: 999,00">
+                    </div>
+                </div>
+            </fieldset>
 
-        <fieldset>
-            <legend>3. Cálculo da Rediluição</legend>
-            <div class="input-group">
-                <label for="valorNovoBoleto">Valor integral do último boleto </label>
-                <input type="number" id="valorNovoBoleto" placeholder="Valor do boleto 06 ou 12">
-            </div>
-        </fieldset>
+            <fieldset>
+                <legend>3. Cálculo da Rediluição</legend>
+                <div class="row-horizontal">
+                    <div class="input-group">
+                        <label for="valorNovoBoleto">Valor integral do último boleto</label>
+                        <input type="text" inputmode="decimal" id="valorNovoBoleto" placeholder="Ex: 1000,50">
+                    </div>
+                    
+                    <div class="input-group">
+                        <button onclick="calcularRediluicao()" class="btn-calcular">Calcular</button>
+                    </div>
+                </div>
+            </fieldset>        
+                   
+            <div id="resultado" class="resultado-box"></div>
+              
+        </div>
+    </div> 
 
-        <button onclick="calcularRediluicao()">Calcular</button>
-
-        <div id="resultado">
-             </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="script1.js"></script>
 </body>
 </html>
-
-
-
-
-
