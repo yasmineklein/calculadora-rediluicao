@@ -27,6 +27,80 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+nav {
+    width: 100%;
+    background: rgba(0, 26, 51, 0.5); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+}
+
+.nav.scrolled {
+    background: rgba(0, 26, 51, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+    /* Sombra do título ajustada */
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+}
+
+nav div {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    position: relative; /* Necessário para ancorar a linha decorativa ao texto */
+}
+
+nav a:hover {
+    color: #00bfff; /* Mantém a mudança de cor da fonte para ciano */
+}
+
+/* Cria a estrutura da linha decorativa invisível */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Distância da linha para o texto */
+    left: 0;
+    width: 0; /* Começa com tamanho zero */
+    height: 2px; /* Espessura da linha */
+    background-color: #00bfff; /* Cor ciano */
+    transition: width 0.3s ease; /* Faz a animação de preenchimento suave */
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.4); /* Leve brilho neon para combinar com o tema */
+}
+
+/* Faz a linha crescer até 100% do tamanho do texto ao passar o mouse */
+nav a:hover::after {
+    width: 100%;
+}
+
 .calculator-container {
     background: rgba(255, 255, 255, 0.05); /* Quase totalmente transparente */
     backdrop-filter: blur(15px); /* Desfoque do fundo (Efeito Vidro) */
@@ -184,4 +258,14 @@ button:active {
     border-radius: 6px;
     text-align: center;
     color: #fff;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 26, 51, 0.4); 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6); 
+    font-size: 14px;
 }
