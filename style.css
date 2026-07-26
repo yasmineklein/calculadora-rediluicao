@@ -1,4 +1,3 @@
-/* Importa uma fonte para um visual mais moderno */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 * {
@@ -13,18 +12,12 @@ body {
     background-size: 400% 400%;
     animation: gradient 20s ease infinite;
     color: rgba(255, 255, 255, 0.971); 
+    
     display: flex;
-    justify-content: center;
+    flex-direction: column; 
+    justify-content: space-between; 
     align-items: center;
     min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-}
-
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 nav {
@@ -76,45 +69,52 @@ nav a {
     font-weight: 500;
     font-size: 16px;
     transition: color 0.3s ease;
-    position: relative; /* Necessário para ancorar a linha decorativa ao texto */
+    position: relative; 
 }
 
 nav a:hover {
-    color: #00bfff; /* Mantém a mudança de cor da fonte para ciano */
-}
+    color: #00bfff; 
 
-/* Cria a estrutura da linha decorativa invisível */
+
 nav a::after {
     content: '';
     position: absolute;
-    bottom: -5px; /* Distância da linha para o texto */
+    bottom: -5px; 
     left: 0;
-    width: 0; /* Começa com tamanho zero */
-    height: 2px; /* Espessura da linha */
-    background-color: #00bfff; /* Cor ciano */
-    transition: width 0.3s ease; /* Faz a animação de preenchimento suave */
-    box-shadow: 0 0 8px rgba(0, 191, 255, 0.4); /* Leve brilho neon para combinar com o tema */
+    width: 0; 
+    height: 2px; 
+    background-color: #00bfff; 
+    transition: width 0.3s ease; 
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.4); 
 }
 
-/* Faz a linha crescer até 100% do tamanho do texto ao passar o mouse */
+
 nav a:hover::after {
     width: 100%;
 }
 
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- CONTAINER DA CALCULADORA --- */
 .calculator-container {
-    background: rgba(255, 255, 255, 0.05); /* Quase totalmente transparente */
-    backdrop-filter: blur(15px); /* Desfoque do fundo (Efeito Vidro) */
-    -webkit-backdrop-filter: blur(15px); /* Suporte para navegadores Safari/Apple */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Borda branca muito sutil */
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15); 
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 900px; 
-}
+    margin: 40px 20px; 
 
 h1 {
-    color: #e6e8e9; /* Ciano Neon para destacar no fundo escuro */
+    color: #e6e8e9; 
     text-align: center;
     margin-bottom: 10px;
 }
@@ -122,12 +122,12 @@ h1 {
 p {
     text-align: center;
     margin-bottom: 25px;
-    color: rgba(255, 255, 255, 0.967); /* Cinza clarinho */
+    color: rgba(255, 255, 255, 0.967); 
     line-height: 1.5;
 }
 
 fieldset {
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda transparente para separar as seções */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
@@ -140,7 +140,7 @@ legend {
     padding: 0 10px;
 }
 
-/* --- CLASSE DO LAYOUT HORIZONTAL --- */
+
 .row-horizontal {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -165,12 +165,12 @@ label {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* Campos de digitação também ficam com fundo de vidro */
+
 input[type="text"] {
     width: 100%;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.08); /* Fundo levemente branco */
-    color: #fff; /* O que o usuário digita fica branco */
+    background: rgba(255, 255, 255, 0.08); 
+    color: #fff; 
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     box-sizing: border-box;
@@ -180,7 +180,7 @@ input[type="text"] {
 }
 
 input[type="text"]::placeholder {
-    color: rgba(255, 255, 255, 0.4); /* Letra do "Ex: 999,00" fica clarinha */
+    color: rgba(255, 255, 255, 0.4); 
 }
 
 input[type="text"]:focus {
@@ -193,8 +193,8 @@ input[type="text"]:focus {
 button {
     width: 100%;
     height: 46px; 
-    background-color: #00bfff; /* Botão ciano preenchido para chamar ação */
-    color: #001A33; /* Texto azul muito escuro para dar leitura */
+    background-color: #00bfff; 
+    color: #001A33; 
     border: none;
     border-radius: 6px;
     font-size: 18px;
@@ -216,7 +216,6 @@ button:active {
     transform: translateY(0);
 }
 
-/* CAIXAS DE RESULTADO ADAPTADAS PARA O TEMA ESCURO */
 #resultado {
     margin-top: 25px;
     border-radius: 8px;
@@ -240,7 +239,6 @@ button:active {
     color: #fff;
 }
 
-/* Alertas com fundo transparente e borda colorida brilhante */
 .success {
     background-color: rgba(40, 167, 69, 0.15);
     border: 1px solid #28a745;
