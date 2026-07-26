@@ -1,3 +1,4 @@
+/* Importa uma fonte para um visual mais moderno */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 * {
@@ -46,7 +47,7 @@ nav {
     height: 3px;
     background: var(--accent-color);
     border-radius: 2px;
-    /* Sombra do título ajustada */
+    
     box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
 }
 
@@ -70,10 +71,10 @@ nav a {
     font-size: 16px;
     transition: color 0.3s ease;
     position: relative; 
-}
 
 nav a:hover {
     color: #00bfff; 
+}
 
 
 nav a::after {
@@ -104,7 +105,7 @@ nav a:hover::after {
 .calculator-container {
     background: rgba(255, 255, 255, 0.05); 
     backdrop-filter: blur(15px); 
-    -webkit-backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); 
     border: 1px solid rgba(255, 255, 255, 0.15); 
     padding: 30px;
     border-radius: 12px;
@@ -112,6 +113,7 @@ nav a:hover::after {
     width: 100%;
     max-width: 900px; 
     margin: 40px 20px; 
+}
 
 h1 {
     color: #e6e8e9; 
