@@ -21,6 +21,12 @@ body {
     min-height: 100vh;
 }
 
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 nav {
     width: 100%;
     background: rgba(0, 26, 51, 0.5); 
@@ -94,12 +100,6 @@ nav a:hover::after {
     width: 100%;
 }
 
-
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
 
 /* --- CONTAINER DA CALCULADORA --- */
 .calculator-container {
