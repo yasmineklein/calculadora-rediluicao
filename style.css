@@ -9,9 +9,9 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(-90deg, #003CA6, #0054A6);
+    background-color: #003CA6;
+    color: rgba(255, 255, 255, 0.971);
     background-size: 400% 400%;
-    animation: gradient 20s ease infinite;
     color: rgba(255, 255, 255, 0.971); 
     
     display: flex;
