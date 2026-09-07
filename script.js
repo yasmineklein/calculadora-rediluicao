@@ -8,7 +8,6 @@ function parseBRFloat(valor) {
     return parseFloat(valorFinal);
 }
 
-
 function formatBRMoney(valor) {
     return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
@@ -33,8 +32,14 @@ function calcularRediluicao() {
     const totalfinInicial = valorParcelaLeve1 + valorParcelaLeve2 + valorParcelaLeve3;
     const diferencaRediluicao = valorNovoBoleto - valorParcelaLeve;
     const totalRediluido = diferencaRediluicao * qtdParcelas;
-    const diferencafinrediluicao = totalfinInicial - totalRediluido;
-    const credito = totalfinInicial - totalRediluido;
+    
+    let diferencafinrediluicao = Number((totalfinInicial - totalRediluido).toFixed(2));
+    let credito = Number((totalfinInicial - totalRediluido).toFixed(2));
+
+    
+    if (credito === -0) credito = 0;
+    if (diferencafinrediluicao === -0) diferencafinrediluicao = 0;
+    
 
     document.getElementById('totalDiluidoInicial').innerText = qtdParcelas;
     document.getElementById('resFaturado').innerText = formatBRMoney(totalDiluidoInicial);
@@ -49,7 +54,7 @@ function calcularRediluicao() {
     detalheCredito.style.display = 'block';
 
     if (credito > 0) {
-        caixaAcao.style.backgroundColor = 'rgba(40, 167, 69, 0.15)'; // Verde
+        caixaAcao.style.backgroundColor = 'rgba(40, 167, 69, 0.15)'; 
         caixaAcao.style.border = '1px solid #28a745';
         caixaAcao.style.color = '#28a745';
         textoAcao.innerHTML = `Ação Necessária: Realizar ajuste de <br> <strong>${formatBRMoney(credito)}</strong>`;
@@ -62,17 +67,17 @@ function calcularRediluicao() {
         caixaAcao.style.color = '#00bfff';
         textoAcao.innerHTML = `Resultado: <strong>${formatBRMoney(credito)}</strong>`;
         
-        detalheCredito.innerHTML = "Não há ajuste a ser lançado. O novo valor diluído é maior ou igual ao anterior.";
+        detalheCredito.innerHTML = "Não há ajuste a ser lançado. O valor aplicado no financeiro foi rediluído corretamente.";
         detalheCredito.style.borderLeft = "4px solid #00bfff";
     } 
     else {
         caixaAcao.style.backgroundColor = 'rgba(0, 191, 255, 0.15)'; 
-        caixaAcao.style.border = '1px solid #00bfff';
-        caixaAcao.style.color = '#00bfff';
+        caixaAcao.style.border = '1px solid #881a1a';
+        caixaAcao.style.color = '#e71e1e';
         textoAcao.innerHTML = `Resultado: <strong>${formatBRMoney(Math.abs(credito))}</strong>`;
         
         detalheCredito.innerHTML = "O valor a ser diluído aumentou. Verifique se há uma quarta diluição para cobrir essa diferença.<br><br>A cobrança adicional precisa corresponder ao somatório do novo valor total, caso esteja a maior realize os devidos ajustes. Se for gerado a menor ou não existir não será necessária nenhuma ação.";
-        detalheCredito.style.borderLeft = "4px solid #00bfff";
+        detalheCredito.style.borderLeft = "4px solid #ff0000";
     }
 
     document.getElementById('resultado').style.display = 'flex';
@@ -86,3 +91,16 @@ function limparTudo() {
     const inputs = document.querySelectorAll('input[type="text"]');
     inputs.forEach(input => input.value = '');
 }
+
+document.addEventListener('keydown', function(event) {
+    
+    const modalResultado = document.getElementById('resultado');
+    
+    if (modalResultado && modalResultado.style.display === 'flex') {
+        if (event.key === 'Escape' || event.key === 'Esc' || event.key === 'Enter') {
+            
+            event.preventDefault(); 
+            fecharModalResultado();
+        }
+    }
+});
