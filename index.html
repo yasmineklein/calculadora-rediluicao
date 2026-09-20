@@ -29,7 +29,7 @@
                 <div class="row-horizontal">
                     <div class="input-group">
                         <label for="valorMatricula">Valor Integral da Matrícula</label>
-                        <input type="text" inputmode="decimal" id="valorMatricula" placeholder="Ex: 999,00">
+                        <input type="text" inputmode="decimal" id="valorMatricula" placeholder="Ex: 000,00">
                     </div>
                     <div class="input-group">
                         <label for="valorParcelaLeve">Valor da Parcela Leve</label>
@@ -40,22 +40,24 @@
                         <input type="text" inputmode="numeric" id="qtdParcelas" placeholder="Ex: 1, 2 ou 3">
                     </div>
                 </div>
-             </fieldset>
+
+               <p class="obs-text">*obs: Preencher com o valor integral do primeiro boleto do semestre com o parcelamento (matrícula ou renovação/reabertura).</p>            
+            </fieldset>
 
             <fieldset>
                 <legend>Valores no Financeiro</legend>
                 <div class="row-horizontal">
                     <div class="input-group">
-                        <label for="valorParcelaLeve1">Valor da Parcela 1 </label>
-                        <input type="text" inputmode="decimal" id="valorParcelaLeve1" placeholder="Ex: 999,00">
+                        <label for="valorParcelaLeve1">Valor do dbparcelaleve 1 </label>
+                        <input type="text" inputmode="decimal" id="valorParcelaLeve1" placeholder="Ex: 000,00">
                     </div>
                     <div class="input-group">
-                        <label for="valorParcelaLeve2">Valor da Parcela 2 </label>
-                        <input type="text" inputmode="decimal" id="valorParcelaLeve2" placeholder="Ex: 999,00">
+                        <label for="valorParcelaLeve2">Valor do dbparcelaleve 2 </label>
+                        <input type="text" inputmode="decimal" id="valorParcelaLeve2" placeholder="Ex: 000,00">
                     </div>
                     <div class="input-group">
-                        <label for="valorParcelaLeve3">Valor da Parcela 3 </label>
-                        <input type="text" inputmode="decimal" id="valorParcelaLeve3" placeholder="Ex: 999,00">
+                        <label for="valorParcelaLeve3">Valor do dbparcelaleve 3 </label>
+                        <input type="text" inputmode="decimal" id="valorParcelaLeve3" placeholder="Ex: 000,00">
                     </div>
                 </div>
             </fieldset>
@@ -64,8 +66,8 @@
                 <legend>Cálculo da Rediluição</legend>
                 <div class="row-horizontal">
                     <div class="input-group">
-                        <label for="valorNovoBoleto">Valor integral do último boleto</label>
-                        <input type="text" inputmode="decimal" id="valorNovoBoleto" placeholder="Ex: 1000,50">
+                        <label for="valorNovoBoleto">Valor integral do último boleto gerado no semestre</label>
+                        <input type="text" inputmode="decimal" id="valorNovoBoleto" placeholder="Ex: 0000,00">
                     </div>
 
                     <div class="input-group">
@@ -73,6 +75,7 @@
                         <button onclick="limparTudo()" style="background-color: transparent; border: 1px solid #00bfff; color: #00bfff; margin-top: 10px;">Limpar Tudo</button>
                     </div>
                 </div>
+                <p class="obs-text">*obs: apenas o valor da mensalidade sem somar as parcelas leve aplicadas.</p>  
             </fieldset>        
         </div>
     </div> 
@@ -88,11 +91,11 @@
                <strong id="resFaturado">R$ 0,00</strong>
             </div>
             <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: #fff;">
-              <span>Soma das parcelas no financeiro:</span>
+              <span>Soma das parcelas no financeiro (dbparcelaleve):</span>
               <strong id="totalfinInicial">R$ 0,00</strong>
             </div>
             <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: #fff;">
-              <span>Novo total a ser parcelado:</span>
+              <span>Novo total a ser parcelado (valor atualizado):</span>
               <strong id="totalRediluido">R$ 0,00</strong>
             </div>
 
