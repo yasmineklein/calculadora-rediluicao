@@ -57,7 +57,7 @@ function calcularRediluicao() {
         caixaAcao.style.backgroundColor = 'rgba(40, 167, 69, 0.15)'; 
         caixaAcao.style.border = '1px solid #28a745';
         caixaAcao.style.color = '#28a745';
-        textoAcao.innerHTML = `Ação Necessária: Realizar ajuste de <br> <strong>${formatBRMoney(credito)}</strong>`;
+        textoAcao.innerHTML = `Ação Necessária: Realizar o lançamento de crédito no valor de <br> <strong>${formatBRMoney(credito)}</strong>`;
         
         detalheCredito.style.display = 'none'; 
     } 
